@@ -126,4 +126,17 @@ public class MarsRoverTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void move_forward_to_east_from_last_x_position_should_return_0(){
+        int expected = 0;
+
+        MarsRover bot =  new MarsRover(41,0, DirectionTag.E);
+
+        bot.moveForward();
+
+        int actual = bot.getX();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
