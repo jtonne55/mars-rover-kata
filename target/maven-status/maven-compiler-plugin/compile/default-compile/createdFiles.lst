@@ -1,3 +1,7 @@
-org\example\Main.class
 rover\MarsRover.class
+rover\South.class
+rover\East.class
+rover\North.class
+rover\West.class
 rover\Direction.class
+rover\DirectionTag.class

@@ -1,9 +1,18 @@
 package rover;
 
-public enum Direction {
+public  abstract class Direction {
 
-    N,
-    S,
-    W,
-    E;
+    protected DirectionTag directionTag;
+
+    public DirectionTag getDirectionTag(){
+        return directionTag;
+    }
+
+    abstract int getForwardTranslationX();
+
+    abstract int getForwardTranslationY();
+
+    abstract Direction getLeftDirection();
+
+    abstract Direction getRightDirection();
 }
