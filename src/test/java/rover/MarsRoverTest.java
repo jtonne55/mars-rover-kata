@@ -9,19 +9,19 @@ import rover.MarsRover;
 public class MarsRoverTest {
 
     @Test
-    public void initial_position_x_equals_42_should_return_42_Test(){
-        int expected_x = 42;
+    public void initial_position_x_equals_40_should_return_40_Test(){
+        int expected_x = 40;
 
-        int actual_x = (new MarsRover(42,0)).getX();
+        int actual_x = (new MarsRover(40,0)).getX();
 
         Assertions.assertEquals(expected_x, actual_x);
     }
 
     @Test
-    public void initial_position_y_equals_42_should_return_y_equals_42_Test(){
-        int expected_y = 42;
+    public void initial_position_y_equals_40_should_return_y_equals_40_Test(){
+        int expected_y = 40;
 
-        int actual_y = (new MarsRover(0, 42)).getY();
+        int actual_y = (new MarsRover(0, 40)).getY();
 
         Assertions.assertEquals(expected_y, actual_y);
     }
@@ -127,7 +127,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void move_forward_to_east_from_last_x_position_should_return_0(){
+    public void move_forward_to_east_from_last_x_position_should_return_0_Test(){
         int expected = 0;
 
         MarsRover bot =  new MarsRover(41,0, DirectionTag.E);
@@ -138,5 +138,46 @@ public class MarsRoverTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void next_step_move_forward_east_from_x_0_y_0_position_should_report_obstacle_true_Test(){
+        boolean expected = true;
+
+        MarsRover bot =  new MarsRover(DirectionTag.E);
+
+        bot.addObstacle(new Position(1,0));
+
+        boolean actual = bot.ifMoveForwardIsAnObstacle();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void next_step_move_forward_east_from_x_0_y_0_position_should_report_obstacle_false_Test(){
+        boolean expected = false;
+
+        MarsRover bot =  new MarsRover(DirectionTag.E);
+
+        bot.addObstacle(new Position(0,0));
+
+        boolean actual = bot.ifMoveForwardIsAnObstacle();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void next_step_move_backward_east_from_x_1_y_0_position_should_report_obstacle_true_Test(){
+        boolean expected = true;
+
+        MarsRover bot =  new MarsRover(1, 0, DirectionTag.E);
+
+        bot.addObstacle(new Position(0,0));
+
+        boolean actual = bot.ifMoveBackwardIsAnObstacle();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+  
 
 }

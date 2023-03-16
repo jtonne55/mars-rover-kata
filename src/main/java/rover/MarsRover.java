@@ -1,14 +1,18 @@
 package rover;
 
+import java.util.ArrayList;
+
 public class MarsRover {
 
-    private int x;
-    private int y;
+    private int x = 0;
+    private int y = 0;
 
     public int x_length = 42;
 
     public int y_length = 42;
     private Direction direction;
+
+    private ArrayList<Position> obstacles = new ArrayList<Position>();
     public MarsRover(int pos_x, int pos_y){
         this.x = pos_x % x_length;
         this.y = pos_y % y_length;
@@ -67,4 +71,45 @@ public class MarsRover {
     public void turnRight(){
         direction = direction.getRightDirection();
     }
+
+    public void addObstacle(Position position){
+        obstacles.add(position);
+    }
+
+    public Position getNextPositionForward(){
+        int next_x = (x + direction.getForwardTranslationX()) % x_length;
+        int next_y =  (y + direction.getForwardTranslationY()) % y_length;
+        return new Position(next_x, next_y);
+    }
+    public Position getNextPositionBackward(){
+        int next_x = (x - direction.getForwardTranslationX()) % x_length;
+        int next_y =  (y - direction.getForwardTranslationY()) % y_length;
+        return new Position(next_x, next_y);
+    }
+
+    public boolean ifMoveForwardIsAnObstacle(){
+        Position nextPosition = getNextPositionForward();
+
+        return ifPositionIsAnObstacle(nextPosition);
+    }
+
+    public boolean ifMoveBackwardIsAnObstacle(){
+        Position nextPosition = getNextPositionBackward();
+
+        return ifPositionIsAnObstacle(nextPosition);
+    }
+    public boolean ifPositionIsAnObstacle(Position current_position){
+
+        boolean positionIsAnObstacle = obstacles.
+                parallelStream().
+                filter(position -> position.equals(current_position)).
+                findFirst().
+                isPresent();
+
+        return positionIsAnObstacle;
+    }
+
+
+
+
 }
