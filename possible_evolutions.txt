@@ -1,0 +1,9 @@
+List of some remain ideas for this kata :
+
+1)  Modify position in MarsRover as a Position(x,y) not only two attributes fields x,y and modify methods accordingly.
+
+2) Implement More complete test with obstacles, many directions and others turns
+
+3) Draw in standard output map for mars rover and wich way intempt to take with obtacles
+
+4) Add spring boot APIs to control mars rover
