@@ -1,4 +1,4 @@
-package rover;
+package direction;
 
 public class West extends Direction {
     public West(){
@@ -6,19 +6,19 @@ public class West extends Direction {
         directionTag = DirectionTag.W;
     }
 
-    int getForwardTranslationX() {
+    public int getForwardTranslationX() {
         return -1;
     }
 
-    int getForwardTranslationY() {
+    public int getForwardTranslationY() {
         return 0;
     }
 
-    Direction getLeftDirection() {
+    public Direction getLeftDirection() {
         return new South();
     }
 
-    Direction getRightDirection() {
+    public Direction getRightDirection() {
         return new North();
     }
 }

@@ -1,4 +1,4 @@
-package rover;
+package direction;
 
 public class North extends Direction{
     public North(){
@@ -7,21 +7,21 @@ public class North extends Direction{
     }
 
 
-    int getForwardTranslationX() {
+    public int getForwardTranslationX() {
         return 0;
     }
 
-    int getForwardTranslationY() {
+    public int getForwardTranslationY() {
         return 1;
     }
 
 
-    Direction getLeftDirection() {
+    public Direction getLeftDirection() {
         return new West();
     }
 
     @Override
-    Direction getRightDirection() {
+    public Direction getRightDirection() {
         return new East();
     }
 }

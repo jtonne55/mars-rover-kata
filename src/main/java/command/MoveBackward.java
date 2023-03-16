@@ -1,8 +1,11 @@
-package rover;
+package command;
+
+import rover.MarsRover;
+import exception.ObstacleException;
 
 public class MoveBackward extends Command {
 
-    void execute(MarsRover bot) throws ObstacleException {
+    public void execute(MarsRover bot) throws ObstacleException {
 
         if(bot.ifMoveBackwardIsAnObstacle()){
             throw new ObstacleException();

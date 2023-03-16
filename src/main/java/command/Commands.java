@@ -1,10 +1,10 @@
-package rover;
+package command;
 
 import java.util.ArrayList;
 
 public class Commands {
 
-    ArrayList<Command> command_list;
+    public ArrayList<Command> command_list;
     public Commands(char [] commands){
 
         this.command_list = new ArrayList<Command>();

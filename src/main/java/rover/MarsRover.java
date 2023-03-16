@@ -1,5 +1,8 @@
 package rover;
 
+import direction.*;
+import position.Position;
+
 import java.util.ArrayList;
 
 public class MarsRover {

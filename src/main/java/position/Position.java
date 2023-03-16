@@ -1,4 +1,4 @@
-package rover;
+package position;
 
 public class Position {
 

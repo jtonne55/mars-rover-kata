@@ -1,9 +1,12 @@
 package rover;
 
+import command.Command;
+import command.Commands;
+import direction.DirectionTag;
+import exception.ObstacleException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import rover.Direction;
-import rover.MarsRover;
+import position.Position;
 
 
 public class MarsRoverTest {
@@ -178,6 +181,28 @@ public class MarsRoverTest {
         Assertions.assertEquals(expected, actual);
     }
 
-  
+    @Test
+    public void move_3_times_forward_then_backward_east_from_pos_0_0_should_return_current_position_x_2_y_0_true_Test(){
+
+        boolean expected = true;
+
+        MarsRover bot =  new MarsRover(DirectionTag.E);
+
+        char [] simple_commands = {'f','f','f','b'};
+
+        Commands commands = new Commands(simple_commands);
+
+        for (Command command : commands.command_list) {
+            try {
+                command.execute(bot);
+            } catch (ObstacleException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        boolean actual = (bot.getX() == 2 && bot.getY() == 0);
+
+        Assertions.assertEquals(expected, actual);
+    }
 
 }

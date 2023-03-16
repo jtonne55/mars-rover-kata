@@ -1,4 +1,6 @@
-package rover;
+package exception;
+
+import position.Position;
 
 public class ObstacleException extends Exception {
 

@@ -1,4 +1,4 @@
-package rover;
+package direction;
 
 public enum DirectionTag {
     N,
