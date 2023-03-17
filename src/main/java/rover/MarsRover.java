@@ -10,6 +10,11 @@ public class MarsRover {
     private int x = 0;
     private int y = 0;
 
+
+
+    /*
+    * Plan by default is 42 x 42 length so x E [0,41] and y E [0,41] with a Position (x,y)
+    * */
     public int x_length = 42;
 
     public int y_length = 42;
@@ -45,6 +50,12 @@ public class MarsRover {
         y = pos_y % y_length;
     }
 
+    public MarsRover(int pos_x, int pos_y, DirectionTag dir, int x_length, int y_length){
+        this(pos_x, pos_y, dir);
+        this.x_length = x_length;
+        this.y_length = y_length;
+    }
+
     public int getX() {
         return x;
     }
@@ -58,6 +69,22 @@ public class MarsRover {
     }
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getX_length() {
+        return x_length;
+    }
+
+    public void setX_length(int x_length) {
+        this.x_length = x_length;
+    }
+
+    public int getY_length() {
+        return y_length;
+    }
+
+    public void setY_length(int y_length) {
+        this.y_length = y_length;
     }
     public void setDirection(Direction dir) {
         direction = dir;
