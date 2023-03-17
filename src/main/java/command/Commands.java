@@ -1,5 +1,7 @@
 package command;
 
+import exception.CommandNotFoundException;
+
 import java.util.ArrayList;
 
 public class Commands {
@@ -13,19 +15,28 @@ public class Commands {
 
             Command new_command = null;
 
-            if(command == 'f'){
-                new_command = new MoveForward();
-            } else if (command == 'b') {
-                new_command = new MoveBackward();
-            } else if (command == 'l') {
-                new_command = new TurnLeft();
-            } else if (command == 'r') {
-                new_command = new TurnRight();
-            }
+            try {
+                new_command = getCommandFromLetter(command);
 
-            if(new_command != null){
-                this.command_list.add(new_command);
+                if(new_command != null){
+                    this.command_list.add(new_command);
+                }
             }
+            catch (CommandNotFoundException notFoundException) {
+            }
+        }
+    }
+
+    public Command getCommandFromLetter(char commandLetter) throws CommandNotFoundException {
+
+        switch(commandLetter) {
+
+            case 'f' : return new MoveForward();
+            case 'b' : return new MoveBackward();
+            case 'l' : return new TurnLeft();
+            case 'r' : return new TurnRight();
+
+            default : throw new CommandNotFoundException();
         }
     }
 }
