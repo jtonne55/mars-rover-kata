@@ -205,4 +205,50 @@ public class MarsRoverTest {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void complete_Test(){
+
+        boolean expected = true;
+
+        // Start from Position(0,0) default with east direction
+        MarsRover bot =  new MarsRover(DirectionTag.E);
+
+        // Add obstacle at Position(3,2)
+        bot.addObstacle(new Position(3,2));
+
+        /*
+         * 0 - Start at Position (0,0) + direction east
+         * 1 - go forward -> Position(1,0) + direction east
+         * 2 - turn left -> Position(1,0) + direction north
+         * 3 - go forward -> Position(1,1) + direction north
+         * 4 - turn right -> Position(1,1) + direction east
+         * 5 - go forward -> Position(2,1) + direction east
+         * 6 - turn right -> Position(2,1) + direction south
+         * 7 - go backward -> Position(2,2) + direction south
+         * 8 - turn left -> Position(2,2) + direction east
+         * 9 - go forward -> OBSTACLE at Position(3,2)
+         * 10 - go forward -> not executed due to previous obstacle
+         */
+        char [] simple_commands = {'f','l','f','r','f','r','b', 'l', 'f', 'f'};
+
+        Commands commands = new Commands(simple_commands);
+
+        for (Command command : commands.command_list) {
+
+            try {
+
+                System.out.println("Position("+bot.getX()+"," +bot.getY()+") + "+bot.getDirection());
+                command.execute(bot);
+
+            } catch (ObstacleException e) {
+
+                System.out.println("Obstacle !");
+                break;
+            }
+        }
+
+        boolean actual = (bot.getX() == 2 && bot.getY() == 2);
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
